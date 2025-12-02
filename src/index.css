@@ -29,12 +29,14 @@ h1 {
 .avatar {
   width: 100%;
   display: block;
-  border: 1px solid black;
 }
 
 .data {
   padding: 32px;
   padding-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .skill-list {

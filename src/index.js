@@ -2,6 +2,39 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 
+const skills = [
+  {
+    skill: "HTML & CSS",
+    level: "advanced",
+    color: "#2662EA",
+  },
+  {
+    skill: "JavaScript",
+    level: "advanced",
+    color: "#Efd81D",
+  },
+  {
+    skill: "Web Design",
+    level: "advanced",
+    color: "#c3dcaf",
+  },
+  {
+    skill: "Git and Github",
+    level: "Intermediate",
+    color: "#e84f33",
+  },
+  {
+    skill: "React",
+    level: "advanced",
+    color: "#60dafb",
+  },
+  {
+    skill: "Svelte",
+    level: "beginner",
+    color: "#FF3b00",
+  },
+];
+
 function App() {
   return (
     <React.StrictMode>
@@ -17,25 +50,30 @@ function App() {
 }
 
 function Avatar() {
-  return <img src="/logo192.png" alt="react" className="avatar" />;
+  return <img src="/react.svg" alt="react" className="avatar" />;
 }
 function Intro() {
   return (
     <main>
       <h1> Burhanudin Rabbani </h1>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec
-        lorem sem. Ut commodo tortor eget mi mattis consectetur. Vivamus
-        consequat justo vitae tempus auctor.
+        I started my new career journey by joining and actively participating in
+        a course called Bearmentor. Keep learning and creating is a life motto I
+        hold dear now and forever.
       </p>
     </main>
   );
 }
 
-function Skill(props) {
+function Skill({ skillObj }) {
+  let icon;
+  if (skillObj.level === "advanced") icon = "💪";
+  else if (skillObj.level === "Intermedate") icon = "👍";
+  else icon = "😏";
+
   return (
-    <span className="skill" style={{ backgroundColor: props.color }}>
-      {props.skillName}{" "}
+    <span className="skill" style={{ backgroundColor: skillObj.color }}>
+      {skillObj.skill} {icon}
     </span>
   );
 }
@@ -43,12 +81,9 @@ function Skill(props) {
 function SkillList() {
   return (
     <div className="skill-list">
-      <Skill color="blue" skillName="HTML & CSS 💪" />
-      <Skill color="yellow" skillName="JavaScript 💪" />
-      <Skill color="lime" skillName="Web Design 💪" />
-      <Skill color="red" skillName="Git and Github 👍" />
-      <Skill color="aqua" skillName="React 💪" />
-      <Skill color="red" skillName="Svelte 😇" />
+      {skills.map((skill) => {
+        return <Skill key={skill.skill} skillObj={skill} />;
+      })}
     </div>
   );
 }
